@@ -17,11 +17,11 @@ export class PipelineStack extends Stack {
   constructor(scope: Construct, id: string, props: PipelineStackProps) {
     super(scope, id, props);
 
-    const prod = new WebsiteStage(this, 'ProdWebsite', {
+    const prod = new WebsiteStage(this, `${id}-ProdWebsite`, {
       env: {account: props.account, region: props.region}
     });
 
-    new SelfMutatingPipeline(this, 'SelfMutatingPipeline', {
+    new SelfMutatingPipeline(this, `${id}-SelfMutatingPipeline`, {
       sourceConnectionArn: props.connectionArn,
       repositoryName: `${props.repoOwner}/${props.repoName}`,
       branchName: props.branch,

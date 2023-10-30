@@ -12,7 +12,7 @@ export class WebsiteStage extends Stage {
   constructor(scope: Construct, id: string, props: WebsiteStageProps) {
     super(scope, id, props);
 
-    new DeploymentStack(this, 'WebsiteStack', {
+    new DeploymentStack(this, `${id}-WebsiteStack`, {
     });
   }
 
